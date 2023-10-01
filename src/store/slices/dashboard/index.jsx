@@ -1,6 +1,6 @@
 const {createSlice} = require('@reduxjs/toolkit');
 
-const dashboard = createSlice({
+const slice = createSlice({
   name: 'dashboard',
   initialState: {
     isLoading: true,
@@ -8,6 +8,17 @@ const dashboard = createSlice({
     isError: false,
   },
   reducers: {
-    initDashboard: () => {},
+    initDashboard: (state, action) => {
+      return {...state, isLoading: true};
+    },
+    successDashboard: (state, action) => {
+      return {...state, isLoading: false, response: action.payload};
+    },
+    failDashboard: (state, action) => {
+      return {...state, isLoading: false, isError: true};
+    },
   },
 });
+
+export const {initDashboard, successDashboard, failDashboard} = slice.actions;
+export default slice.reducer;

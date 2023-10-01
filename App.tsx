@@ -1,10 +1,15 @@
+import {NavigationContainer} from '@react-navigation/native';
 import React from 'react';
-import {View, Text} from 'react-native';
+import {Provider} from 'react-redux';
+import GetStacks from './src/stacks/GetStacks';
+import {store} from './src/store';
 
 export default function App() {
   return (
-    <View>
-      <Text>Hello</Text>
-    </View>
+    <Provider store={store}>
+      <NavigationContainer>
+        <GetStacks />
+      </NavigationContainer>
+    </Provider>
   );
 }
